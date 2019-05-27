@@ -51,10 +51,11 @@ public class RESTAPI {
     public static void test() throws IOException, ParserConfigurationException, SAXException {
         RESTAPI rest = new RESTAPI();
         setCred1("administrator");
-        setCred2("<SECRET>");
+        setCred2("5ecr3t");
         String file = "/home/o.nekriach/Documents/IAM/MidPoint/git_clone/midpoint/samples/rest/query-filtered-roles3.xml";
         String searchFilter = FileUtil.readFileToString(file, Charset.defaultCharset());
        String resource = rest.httpClientGetObject("https://idm-test.dyninno.net/midpoint/ws/rest/resources/b13cf619-3920-4c81-b3b6-aedbb540de88");
+       String user = rest.httpClientGetObject("https://idm-test.dyninno.net/midpoint/ws/rest/users/08abfdf4-37ed-4585-b691-48a4b471ce67");
         
         String role=rest.httpClientSendDataFile("http://idm-test.dyninno.net:8888/midpoint/ws/rest/roles/search", "POST", searchFilter);
         System.out.println("role:\r\n"+role);
@@ -62,6 +63,7 @@ public class RESTAPI {
         xmlutil.XmlUtil.getFieldValue(resource, "name");
         xmlutil.XmlUtil.getOIDValue(role, "");
         xmlutil.XmlUtil.getNamesOIDMap(role,"",false);
+        xmlutil.XmlUtil.getEffectiveStatus(user, "activation");
         
     }
 

@@ -34,6 +34,13 @@ static String ADROLEDESCRIPTION="AD role to provide full access to "+FOLDERS+" f
 static String ADROLEINDUCEMENT="<c:inducement><c:construction><c:resourceRef oid=\""+ADOID+"\" relation=\"org:default\" type=\"c:ResourceType\"><!-- Resource --></c:resourceRef><c:kind>account</c:kind><c:intent>"+INTENT+"</c:intent><c:association><c:ref>ri:group</c:ref><c:outbound><c:strength>strong</c:strength><c:expression><associationTargetSearch xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"c:SearchObjectExpressionEvaluatorType\"><filter><q:equal><q:path>declare namespace icfs='http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3'; declare namespace ri='http://midpoint.evolveum.com/xml/ns/public/resource/instance-3'; attributes/"+ADSEARCHATTRIBUTE+"</q:path><q:value>"+GROUPNAME+"</q:value></q:equal></filter><c:searchOnResource>true</c:searchOnResource></associationTargetSearch></c:expression></c:outbound></c:association></c:construction></c:inducement>";
 static String ACTIONROLECREATION="<s:value xsi:type=\"c:RoleType\"><c:name>"+GROUPNAME+"</c:name><c:displayName>"+GROUPNAME+"</c:displayName><c:description>"+PROJECTROLEDESCRIPTION+"</c:description><c:roleType>"+ROLETYPE+"</c:roleType></s:value><s:value xsi:type=\"c:RoleType\"><c:name>role-"+GROUPNAME+"</c:name><c:displayName>"+ADROLEDISPLAYNAME+"</c:displayName><c:description>"+ADROLEDESCRIPTION+"</c:description><c:roleType>"+ROLETYPE+"</c:roleType>"+ADROLEINDUCEMENT+"</s:value>";
 static String ACTIONCROUPREATION="<s:value xsi:type=\"c:RoleType\"><c:name>"+GROUPNAME+"</c:name><c:displayName>"+GROUPNAME+"</c:displayName><c:description>"+ADROLEDESCRIPTION+"</c:description><c:roleType>"+ROLETYPE+"</c:roleType></s:value>";
+
+// For GSuite Swiss DC resource (dyninno.group)
+static String GSUITEDESCRIPTION_SWISSDC="G-Suite Swiss DC group to provide access to team drive\""+FOLDERS+"\"";
+static String ACTIONCROUPREATION_SWISSDC="<s:value xsi:type=\"c:RoleType\"><c:name>"+GROUPNAME+"</c:name><c:displayName>"+GROUPNAME+"</c:displayName><c:description>"+GSUITEDESCRIPTION_SWISSDC+"</c:description><c:roleType>"+ROLETYPE+"</c:roleType></s:value>";
+
+
+
 //Assign role to focus -Start
 static String SEARCHFILTER="%SEARCHFILTER%";
 static String ASSIGNTASK="<task>\n" +

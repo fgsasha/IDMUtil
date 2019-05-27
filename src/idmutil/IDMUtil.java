@@ -19,7 +19,7 @@ import java.util.Properties;
  *
  * @author o.nekriach
  */
-public class IDMUtil {
+public class IDMUtil {    
 
     private static String PROPERTIESFILE = "idmutil.properties";
     static String OUTPUTFILE = "/home/o.nekriach/Downloads/Tasks/automatictask.xml";
@@ -47,6 +47,13 @@ public class IDMUtil {
                 String c3 = task.bulkCreateRoles(input3, primarykey);
                 file.writeStringToFile(OUTPUTFILE, c3);
                 System.out.println("CREATEADGROUPS Task was created: " + OUTPUTFILE);
+            break;
+            case "CREATEGSUITEGROUPS":
+                Map<String, Map<String, String>> input4 = file.getCsvToMap(primarykey, br);
+                Constants.setACTIONROLECREATION(Constants.ACTIONCROUPREATION_SWISSDC);
+                String c4 = task.bulkCreateRoles(input4, primarykey);
+                file.writeStringToFile(OUTPUTFILE, c4);
+                System.out.println("CREATEGSUITEGROUPS for GSUITE Task was created: " + OUTPUTFILE);
                 break;
             case "ASSIGNROLE":
                 Map<String, ArrayList<Map<String, String>>> input2 = file.getCsvToComplexMap(primarykey, br);

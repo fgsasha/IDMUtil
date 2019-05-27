@@ -96,6 +96,24 @@ public class XmlUtil {
         }
         return output;
         }
+        
+       public static void getEffectiveStatus(String xml, String keyName) throws ParserConfigurationException, IOException, SAXException {
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        InputSource src = new InputSource();
+        src.setCharacterStream(new StringReader(xml));
+
+        Document doc = builder.parse(src);
+        String effectiveStatus="";
+        NodeList node = doc.getElementsByTagName(keyName);
+        for(int i=0; i < node.getLength(); i++){
+        Element element=(Element) node.item(i);
+        if(element.getElementsByTagName("effectiveStatus")!=null &&  element.getElementsByTagName("validFrom")!=null){
+        effectiveStatus=element.getElementsByTagName("effectiveStatus").item(0).getTextContent();
+        }
+        }
+        System.out.println("effectiveStatus : " + effectiveStatus);
+
+    } 
 
     public static void main(String[] args) {
 
